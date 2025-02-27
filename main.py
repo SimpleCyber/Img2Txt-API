@@ -8,6 +8,10 @@ app = Flask(__name__)
 # Initialize EasyOCR Reader
 reader = easyocr.Reader(['en'], gpu=False)
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({"message": "Hello", "SimpleCyber": "Img2Txt-API"})
+
 @app.route('/extract_text', methods=['POST'])
 def extract_text():
     if 'image' not in request.files:
@@ -21,8 +25,7 @@ def extract_text():
     text_results = reader.readtext(img)
     extracted_text = [text for _, text, _ in text_results]
     
-    return jsonify({'text': extracted_text})
+    return jsonify({"extracted_text": extracted_text})
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=10000, debug=True)
-
+    app.run(debug=True)
