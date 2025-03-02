@@ -5,8 +5,15 @@ import numpy as np
 
 app = Flask(__name__)
 
-# Initialize EasyOCR Reader
-reader = easyocr.Reader(['en'], gpu=False)
+# Define local model path
+local_model_path = "./model"
+
+# Initialize EasyOCR Reader using local model files
+reader = easyocr.Reader(
+    ['en'],  # English language
+    gpu=False,  # Use CPU (set True if using GPU)
+    model_storage_directory=local_model_path  # Prevents downloading, uses local models
+)
 
 @app.route('/', methods=['GET'])
 def home():
