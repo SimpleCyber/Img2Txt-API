@@ -2,4 +2,9 @@ flask
 opencv-python
 easyocr
 numpy
+tesseract-ocr
 gunicorn
+opencv-python
+torch
+torchvision
+Pillow
