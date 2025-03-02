@@ -1,2 +1,0 @@
-buildCommand: "./render-build.sh"
-startCommand: "gunicorn main:app"
